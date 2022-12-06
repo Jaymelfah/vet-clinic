@@ -42,18 +42,18 @@ SELECT species, MAX(weight_kg), MIN(weight_kg) FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
 
 -- Queries
-SELECT name FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE full_name = 'Melody Pond';
+SELECT name FROM animals LEFT JOIN owners ON animals.owner_id = owners.id WHERE full_name = 'Melody Pond';
 
-SELECT * FROM animals INNER JOIN species ON animals.species_id = species.id WHERE species.id = 1;
+SELECT * FROM animals LEFT JOIN species ON animals.species_id = species.id WHERE species.id = 1;
 
-SELECT * FROM owners FULL OUTER JOIN animals ON owners.id = animals.owner_id;
+SELECT * FROM owners LEFT JOIN animals ON owners.id = animals.owner_id;
 
-SELECT species.name, COUNT(*) FROM animals INNER JOIN species ON animals.species_id = species.id GROUP BY species.name;
+SELECT species.name, COUNT(*) FROM animals LEFT JOIN species ON animals.species_id = species.id GROUP BY species.name;
 
-SELECT animals.name AS "Animal", owners.full_name AS "Owner", species.name AS "Species" FROM animals INNER JOIN owners ON animals.owner_id = owners.id INNER JOIN species 
+SELECT animals.name AS "Animal", owners.full_name AS "Owner", species.name AS "Species" FROM animals LEFT JOIN owners ON animals.owner_id = owners.id LEFT JOIN species 
 ON animals.species_id = species.id WHERE full_name = 'Jennifer Orwell' AND species.name = 'Digimon';
 
-SELECT animals.name AS "Animal", owners.full_name AS "Owner" FROM animals INNER JOIN owners ON animals.owner_id = owners.id WHERE escape_attempts = 0 AND 
+SELECT animals.name AS "Animal", owners.full_name AS "Owner" FROM animals LEFT JOIN owners ON animals.owner_id = owners.id WHERE escape_attempts = 0 AND 
 full_name = 'Dean Winchester';
 
-SELECT full_name, COUNT(*) FROM owners INNER JOIN animals ON owners.id = animals.owner_id GROUP BY full_name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT full_name, COUNT(*) FROM owners LEFT JOIN animals ON owners.id = animals.owner_id GROUP BY full_name ORDER BY COUNT(*) DESC LIMIT 1;
