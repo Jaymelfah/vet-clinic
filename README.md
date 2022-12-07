@@ -3,6 +3,7 @@
 > In this project I used relational database to create the initial data structure for a Vet clinic.
 > I created a 3 tables to store information about the various animals, their owners and species. 
 > I wrote queries using JOIN and aggregates to analyze the data from the multiple tables.
+> I created 2 join tables to also implement many-to-many queries and analysis
 
 
 ## Getting Started
